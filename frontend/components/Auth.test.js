@@ -99,7 +99,7 @@ describe('Auth component', () => {
   }
   test('[7] Logging out a logged-in user displays goodbye message and renders form', async () => {
     // ✨ type valid credentials and submit
-    const { id, username, password, born } = registeredUsers[0]
+    const { username, password } = registeredUsers[0]
     await user.type(userInput, username)
     await user.type(passInput, password)
     await user.click(loginBtn)
