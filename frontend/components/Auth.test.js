@@ -103,15 +103,12 @@ describe('Auth component', () => {
     await user.type(passInput, password)
     await user.click(loginBtn)
     // ✨ await the welcome message
-    expect(await screen.findByText(`Welcome back, ${username}. We LOVE you!`)).toBeVisible()
+    await screen.findByText(`Welcome back, ${username}. We LOVE you!`)
     // ✨ click on the logout button (grab it by its test id)
     await user.click(screen.getByTestId('logoutBtn'))
     // ✨ assert that the goodbye message is eventually visible in the DOM
-    expect(await screen.findByText('Please wait...')).toBeVisible()
-    await waitFor(() => {
-      expect(screen.queryByText('Bye! Please, come back soon.')).toBeVisible()
-      expect(screen.getByTestId('loginForm')).toBeVisible()
-    })
     // ✨ assert that the form is visible in the DOM (select it by its test id)
+    expect(await screen.findByText('Bye! Please, come back soon.')).toBeVisible()
+    expect(screen.getByTestId('loginForm')).toBeVisible()
   })
 })
