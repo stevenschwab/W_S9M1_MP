@@ -51,7 +51,7 @@ describe('Auth component', () => {
     // ✨ click the Login button
     await user.click(loginBtn)
     // ✨ assert that the "Please wait..." message is visible in the DOM
-    expect(await screen.findByText('Please wait...')).toBeVisible()
+    expect(screen.findByText('Please wait...')).toBeVisible()
   })
   test('[3] Submitting form typing [ENTER] shows "Please wait..." message', async () => {
     // ✨ type whatever values in username and password inputs
