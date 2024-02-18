@@ -89,9 +89,9 @@ describe('Auth component', () => {
       // ✨ assert that the correct welcome message is eventually visible
       // ✨ assert that the correct user info appears is eventually visible
       // ✨ assert that the logout button appears
-      await waitFor(() => {
-        expect(screen.queryByText(`Welcome back, ${username}. We LOVE you!`)).toBeVisible()
-        expect(screen.queryByText(`ID: ${id}, Username: ${username}, Born: ${born}`)).toBeVisible()
+      await waitFor(() => { // keeps retrying after a certain amount of time until the assertions are correct
+        expect(screen.getByText(`Welcome back, ${username}. We LOVE you!`)).toBeVisible()
+        expect(screen.getByText(`ID: ${id}, Username: ${username}, Born: ${born}`)).toBeVisible()
         expect(screen.getByTestId('logoutBtn')).toBeVisible()
       })
     })
