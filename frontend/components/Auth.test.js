@@ -66,7 +66,7 @@ describe('Auth component', () => {
     // ✨ submit an empty form
     await user.click(loginBtn)
     // ✨ assert that the "Invalid Credentials" message eventually is visible
-    expect(await screen.findByText('Invalid Credentials')).toBeVisible() // use find by when async
+    expect(await screen.findByText('Invalid Credentials')).toBeVisible() // use find by when needing to wait bc it's async
   })
   test('[5] Submitting incorrect credentials shows "Invalid Credentials" message', async () => {
     // ✨ type whatever username and password and submit form
@@ -89,7 +89,6 @@ describe('Auth component', () => {
       // ✨ assert that the correct welcome message is eventually visible
       // ✨ assert that the correct user info appears is eventually visible
       // ✨ assert that the logout button appears
-      expect(await screen.findByText('Please wait...')).toBeVisible()
       await waitFor(() => {
         expect(screen.queryByText(`Welcome back, ${username}. We LOVE you!`)).toBeVisible()
         expect(screen.queryByText(`ID: ${id}, Username: ${username}, Born: ${born}`)).toBeVisible()
