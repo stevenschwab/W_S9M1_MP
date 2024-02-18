@@ -51,22 +51,22 @@ describe('Auth component', () => {
     // ✨ click the Login button
     await user.click(loginBtn)
     // ✨ assert that the "Please wait..." message is visible in the DOM
-    expect(screen.findByText('Please wait...')).toBeVisible()
+    expect(screen.getByText('Please wait...')).toBeVisible() // no need for await because it appears immediately
   })
   test('[3] Submitting form typing [ENTER] shows "Please wait..." message', async () => {
     // ✨ type whatever values in username and password inputs
     await user.type(userInput, 'gabe')
     await user.type(passInput, 'pass')
     // ✨ hit the [ENTER] key on the keyboard
-    await user.keyboard('{Enter}')
+    await user.keyboard('[ENTER]')
     // ✨ assert that the "Please wait..." message is visible in the DOM
-    expect(await screen.findByText('Please wait...')).toBeVisible()
+    expect(screen.getByText('Please wait...')).toBeVisible() // getby when not asyn
   })
   test('[4] Submitting an empty form shows "Invalid Credentials" message', async () => {
     // ✨ submit an empty form
     await user.click(loginBtn)
     // ✨ assert that the "Invalid Credentials" message eventually is visible
-    expect(await screen.findByText('Invalid Credentials')).toBeVisible()
+    expect(await screen.findByText('Invalid Credentials')).toBeVisible() // use find by when async
   })
   test('[5] Submitting incorrect credentials shows "Invalid Credentials" message', async () => {
     // ✨ type whatever username and password and submit form
